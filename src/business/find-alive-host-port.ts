@@ -10,11 +10,7 @@ const LIMIT = 100;
  * @param ips
  * @returns
  */
-export default function findAliveHostPortList(ips: string[]) {
-  console.log(
-    "find all opened port in host, it maybe cost long time, scanning..."
-  );
-
+export default function findHostPorts(ips: string[]) {
   return promiseLimit(LIMIT, ips, (ip) => {
     return verify_opened_port_list(ip, port_dic(2));
   }).then((arr) => {
